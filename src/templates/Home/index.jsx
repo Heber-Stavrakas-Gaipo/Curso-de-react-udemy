@@ -59,10 +59,9 @@ class Home extends Component {
             searchValue={searchValue}
             handleChange={this.handleChange}
           />
-          <h1>{searchValue}</h1>
         </div>
         {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
-        {filteredPosts.length === 0 && <p>Sua busca não retornou resultados</p>}
+        {filteredPosts.length === 0 && <p>Sua busca por "{searchValue}" não retornou resultados</p>}
         <div className="button-container">
           {!searchValue && (
             <Button
