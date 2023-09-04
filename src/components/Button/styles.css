@@ -1,0 +1,13 @@
+.morePosts {
+    width: 100%;
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+.morePosts:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
