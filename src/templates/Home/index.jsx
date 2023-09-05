@@ -86,14 +86,26 @@ export const Home = () => {
   );
 }
 
-// class Home2 extends Component {
+// class Home extends Component {
 //   state = {
 //     posts: [],
 //     allPosts: [],
 //     page: 0,
 //     postsPerPage: 3,
 //     searchValue: "",
+//     counter: 0 
 //   };
+
+//   handleClick = () => {
+//     this.setState(
+//       (prevState, prevProps) => {
+//         return { counter: prevState.counter + 1 }
+//       },
+//       () => {
+//         console.log('POST', this.state.counter);
+//       }
+//     ); //Técnica ideal para garantir que o estado esteja atualizado e sincronizado
+//   }
 
 //   async componentDidMount() {
 //     await this.loadPosts();
@@ -150,6 +162,8 @@ export const Home = () => {
 //             />
 //           )}
 //         </div>
+//         <h1>{this.state.counter}</h1>
+//         <button onClick={this.handleClick}>Increment</button> 
 //       </section>
 //     );
 //   }
