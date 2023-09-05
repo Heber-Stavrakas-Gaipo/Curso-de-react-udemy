@@ -104,7 +104,7 @@ export const Home = () => {
 //       () => {
 //         console.log('POST', this.state.counter);
 //       }
-//     ); //Técnica ideal para garantir que o estado esteja atualizado e sincronizado
+//     ); //Técnica ideal para garantir que o estado anterior esteja atualizado, correto e sincronizado.
 //   }
 
 //   async componentDidMount() {
