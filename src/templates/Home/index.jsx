@@ -1,11 +1,11 @@
-import {useCallback, useEffect, useState} from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
-import {loadPosts} from "../../utils/load-posts";
-import {Posts} from "../../components/Posts";
-import {Button} from "../../components/Button";
-import {TextInput} from "../../components/TextInput";
+import { loadPosts } from '../../utils/load-posts';
+import { Posts } from '../../components/Posts';
+import { Button } from '../../components/Button';
+import { TextInput } from '../../components/TextInput';
 
 export const Home = () => {
   // state = {
@@ -19,18 +19,17 @@ export const Home = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [page, setPage] = useState(0);
   const [postsPerPage] = useState(3);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   // const {posts, page, postsPerPage, allPosts, searchValue} = this.state;
   const noMorePosts = page + postsPerPage >= allPosts.length;
-  
-  const filteredPosts = !!searchValue
-  ? allPosts.filter((post) => {
-      return post.title.toLowerCase().includes(searchValue.toLowerCase());
-    })
-  : posts;
 
-  
+  const filteredPosts = searchValue
+    ? allPosts.filter((post) => {
+        return post.title.toLowerCase().includes(searchValue.toLowerCase());
+      })
+    : posts;
+
   const handleLoadPosts = useCallback(async (page, postsPerPage) => {
     const postsAndPhotos = await loadPosts();
 
@@ -42,7 +41,7 @@ export const Home = () => {
     setPosts(postsAndPhotos.slice(page, postsPerPage));
     setAllPosts(postsAndPhotos);
   }, []);
-  
+
   useEffect(() => {
     handleLoadPosts(0, postsPerPage);
   }, [handleLoadPosts, postsPerPage]);
@@ -58,7 +57,7 @@ export const Home = () => {
   };
 
   const handleChange = (e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     // this.setState({searchValue: value});
     setSearchValue(value);
   };
@@ -66,25 +65,16 @@ export const Home = () => {
   return (
     <section className="container">
       <div className="search-container">
-        <TextInput
-          searchValue={searchValue}
-          handleChange={handleChange}
-        />
+        <TextInput searchValue={searchValue} handleChange={handleChange} />
       </div>
       {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
-      {filteredPosts.length === 0 && <p>Sua busca por "{searchValue}" não retornou resultados</p>}
+      {filteredPosts.length === 0 && <p>Sua busca por &ldquo;{searchValue}&rdquo; não retornou resultados</p>}
       <div className="button-container">
-        {!searchValue && (
-          <Button
-            text="Load more posts"
-            onClick={loadMorePosts}
-            disabled={noMorePosts}
-          />
-        )}
+        {!searchValue && <Button text="Load more posts" onClick={loadMorePosts} disabled={noMorePosts} />}
       </div>
     </section>
   );
-}
+};
 
 // class Home extends Component {
 //   state = {
@@ -93,7 +83,7 @@ export const Home = () => {
 //     page: 0,
 //     postsPerPage: 3,
 //     searchValue: "",
-//     counter: 0 
+//     counter: 0
 //   };
 
 //   handleClick = () => {
@@ -163,7 +153,7 @@ export const Home = () => {
 //           )}
 //         </div>
 //         <h1>{this.state.counter}</h1>
-//         <button onClick={this.handleClick}>Increment</button> 
+//         <button onClick={this.handleClick}>Increment</button>
 //       </section>
 //     );
 //   }
