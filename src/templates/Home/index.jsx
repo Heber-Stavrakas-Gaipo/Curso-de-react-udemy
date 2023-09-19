@@ -68,7 +68,7 @@ export const Home = () => {
         <TextInput searchValue={searchValue} handleChange={handleChange} />
       </div>
       {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
-      {filteredPosts.length === 0 && <p>Sua busca por &ldquo;{searchValue}&rdquo; não retornou resultados</p>}
+      {filteredPosts.length === 0 && <p>Sua busca não retornou resultados</p>}
       <div className="button-container">
         {!searchValue && <Button text="Load more posts" onClick={loadMorePosts} disabled={noMorePosts} />}
       </div>
